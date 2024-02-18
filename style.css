@@ -160,7 +160,7 @@ h2 {
     position: relative;
     padding-left: 20px;
     /* Adjust space for the line */
-    border-left: 2px solid #4CAF50;
+    border-left: 2px solid #fca26e;
     /* Timeline line */
 }
 
@@ -170,7 +170,7 @@ h2 {
 
 .event-date {
     font-weight: bold;
-    color: #4CAF50;
+    color: #fca26e;
     /* Match timeline line color */
 }
 
