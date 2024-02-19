@@ -1,21 +1,126 @@
+/* Base variables for light mode */
+:root {
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    --accent-color: #007bff;
+    --header-bg-color: #fff;
+    --project-bg-color: #fff;
+    --hover-color: #f0efea;
+    --experience-bg-color: #fff;
+    --timeline-color: #fca26e;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    color: #ccc;
-    background-color: #1a1a1a;
-    transition: background-color 0.3s;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
+/* The switch - the box around the slider */
+/* Container for the toggle switch */
+.toggle-container {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 1000;
+  }
+  
+  /* Style for the toggle switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Adjust width */
+    height: 34px; /* Adjust height */
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px; /* Height of the slider */
+    width: 30px; /* Width of the slider */
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  /* Style for the icons within the slider */
+  .slider-icon {
+    display: none;
+    position: absolute;
+    top: 46%;
+    transform: translateY(-50%);
+    font-size: 16px;
+  }
+  
+  /* Show the sun icon by default */
+  .slider .light-mode-icon {
+    display: block;
+    left: 10px;
+  }
+  
+  /* Show the moon icon when checked */
+  input:checked + .slider .light-mode-icon {
+    display: none;
+  }
+  
+  input:checked + .slider .dark-mode-icon {
+    display: block;
+    right: 6px;
+  }
+  
+  input:checked + .slider {
+    background-color: #182f45;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px); /* Slide the toggle */
+  }
+  
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    animation: fadeIn 1s ease-in;
 }
 
 header {
-    background-color: #333;
-    color: white;
+    background-color: var(--header-bg-color);
+    color: var(--text-color);
     text-align: center;
     padding: 1em 0;
 }
@@ -31,14 +136,13 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #f0efea;
-    /* Light green for hover effect */
+    color: var(--hover-color);
 }
 
 section {
@@ -46,7 +150,7 @@ section {
 }
 
 h2 {
-    color: #fff;
+    color: var(--text-color);
 }
 
 .project-grid {
@@ -60,16 +164,14 @@ h2 {
     position: relative;
     width: 230px;
     height: 300px;
-    /* Adjust as needed */
-    background-color: #262626;
+    background-color: var(--project-bg-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s;
     transform-style: preserve-3d;
     perspective: 1000px;
 }
 
-.tile-front,
-.tile-back {
+.tile-front, .tile-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -93,14 +195,12 @@ h2 {
     color: white;
     font-size: 1.2em;
     background-color: rgba(0, 0, 0, 0.75);
-    /* Semi-transparent background */
     padding: 5px 0;
-    /* Adjust as needed */
 }
 
 .tile-back {
-    background-color: #1a1a1a;
-    color: #ccc;
+    background-color: var(--background-color);
+    color: var(--text-color);
     transform: rotateY(180deg);
     padding: 15px;
     text-align: center;
@@ -118,16 +218,14 @@ h2 {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    
 }
 
 .company-logo {
     width: 50px;
-    /* Adjust as necessary */
     height: 50px;
-    /* Adjust as necessary */
     margin-right: 20px;
     border-radius: 50%;
-    /* Makes the image round */
     align-self: flex-start;
 }
 
@@ -153,15 +251,11 @@ h2 {
     color: #666;
 }
 
-
-
-/* TIMELINE */
+/* Timeline */
 .timeline {
     position: relative;
     padding-left: 20px;
-    /* Adjust space for the line */
-    border-left: 2px solid #fca26e;
-    /* Timeline line */
+    border-left: 2px solid var(--timeline-color);
 }
 
 .timeline-event {
@@ -170,35 +264,17 @@ h2 {
 
 .event-date {
     font-weight: bold;
-    color: #fca26e;
-    /* Match timeline line color */
+    color: var(--timeline-color);
 }
 
 .event-description {
     margin-left: 50px;
 }
 
-
-
-/* Example of a simple fade-in animation */
+/* Animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.container {
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .typing-effect {
@@ -209,21 +285,20 @@ h2 {
     animation: blink 1s step-end infinite;
 }
 
+@keyframes blink {
+    50% { border-color: transparent;}
+}
 .about-section {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    /* Adjust gap between image and text as needed */
 }
 
 .profile-image {
     flex: 0 0 auto;
-    /* Adjust size as needed */
     width: 150px;
-    /* Adjust size as needed */
     height: 150px;
-    /* Adjust size as needed */
     border-radius: 50%;
     object-fit: cover;
 }
@@ -231,5 +306,16 @@ h2 {
 .about-text {
     flex: 1;
     max-width: 600px;
-    /* Adjust as needed */
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --text-color: #ccc;
+    --accent-color: #ff5722;
+    --header-bg-color: #333;
+    --project-bg-color: #262626;
+    --hover-color: #f0efea;
+    --experience-bg-color: #333;
+    --timeline-color: #fca26e;
 }
