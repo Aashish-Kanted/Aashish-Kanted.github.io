@@ -20,3 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         typeEffect(header, 200); // Adjust speed as needed
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('toggle-dark-mode');
+    toggle.addEventListener('change', function(event) {
+      if (event.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  });
+  
