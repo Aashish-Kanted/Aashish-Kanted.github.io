@@ -1,13 +1,16 @@
 /* Base variables for light mode */
 :root {
-    --background-color: #f0f0f0;
+    --background-color: #f8f4eb;
     --text-color: #333;
-    --accent-color: #007bff;
+    --accent-color: #e68a00;
     --header-bg-color: #fff;
     --project-bg-color: #fff;
-    --hover-color: #f0efea;
+    --hover-color: #ffad33;
     --experience-bg-color: #fff;
-    --timeline-color: #fca26e;
+    --timeline-color: #e68a00;
+    --primary-button-color: #e68a00;
+    --link-color: #e68a00;
+    --link-hover-color: #ffad33;
 }
 
 body {
@@ -20,31 +23,30 @@ body {
 }
 
 /* The switch - the box around the slider */
-/* Container for the toggle switch */
 .toggle-container {
     position: fixed;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
+    top: 10px;
+    right: 10px;
     z-index: 1000;
-  }
-  
-  /* Style for the toggle switch */
-  .switch {
+}
+
+/* Style for the toggle switch */
+.switch {
     position: relative;
     display: inline-block;
-    width: 60px; /* Adjust width */
-    height: 34px; /* Adjust height */
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+/* The slider */
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -54,68 +56,102 @@ body {
     background-color: #ccc;
     transition: .4s;
     border-radius: 34px;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
-    height: 30px; /* Height of the slider */
-    width: 30px; /* Width of the slider */
+    height: 30px;
+    width: 30px;
     left: 2px;
     bottom: 2px;
     background-color: white;
     transition: .4s;
     border-radius: 50%;
-  }
-  
-  /* Style for the icons within the slider */
-  .slider-icon {
+}
+
+/* Style for the icons within the slider */
+.slider-icon {
     display: none;
     position: absolute;
-    top: 46%;
+    top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
-  }
-  
-  /* Show the sun icon by default */
-  .slider .light-mode-icon {
+}
+
+.slider .light-mode-icon {
     display: block;
     left: 10px;
-  }
-  
-  /* Show the moon icon when checked */
-  input:checked + .slider .light-mode-icon {
+}
+
+input:checked + .slider .light-mode-icon {
     display: none;
-  }
-  
-  input:checked + .slider .dark-mode-icon {
+}
+
+input:checked + .slider .dark-mode-icon {
     display: block;
     right: 6px;
-  }
-  
-  input:checked + .slider {
-    background-color: #182f45;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px); /* Slide the toggle */
-  }
-  
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  
+}
+
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.project-entry {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--project-bg-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-entry:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.project-details {
+    max-width: 600px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.project-link:hover {
+    color: var(--link-hover-color);
+    transform: scale(1.05);
+}
+
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
     animation: fadeIn 1s ease-in;
+}
+
+.header-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 header {
@@ -136,78 +172,30 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--text-color);
+    color: var(--link-color);
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: bold;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover {
-    color: var(--hover-color);
+    color: var(--link-hover-color);
+    border-bottom: 2px solid var(--link-hover-color);
 }
 
-section {
-    margin: 2em 0;
-}
-
-h2 {
-    color: var(--text-color);
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1em;
-    padding: 3em;
-}
-
-.project-tile {
-    position: relative;
-    width: 230px;
-    height: 300px;
-    background-color: var(--project-bg-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.tile-front, .tile-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.project-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.project-title {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 1.2em;
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 5px 0;
-}
-
-.tile-back {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transform: rotateY(180deg);
-    padding: 15px;
-    text-align: center;
-}
-
-.project-tile:hover {
-    transform: rotateY(180deg);
+/* Dark Mode Styles */
+[data-theme="dark"] {
+    --background-color: #1a1a1a;
+    --text-color: #ccc;
+    --accent-color: #e68a00;
+    --header-bg-color: #333;
+    --project-bg-color: #262626;
+    --hover-color: #f0efea;
+    --experience-bg-color: #333;
+    --timeline-color: #e68a00;
+    --link-color: #ffad33;
+    --link-hover-color: #ffb84d;
 }
 
 .experience-section {
@@ -216,42 +204,66 @@ h2 {
 
 .experience-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
-    
+    padding: 15px;
+    background-color: var(--experience-bg-color);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+}
+
+.experience-logo-title {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 20px;
 }
 
 .company-logo {
     width: 50px;
     height: 50px;
-    margin-right: 20px;
+    margin-right: 10px;
     border-radius: 50%;
-    align-self: flex-start;
+    object-fit: cover;
 }
 
-.experience-details {
-    flex-grow: 1;
-    font-weight: bold;
+.company-title {
+    display: flex;
+    align-items: center;
 }
 
 .company-name {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
-.experience-dates {
-    margin-left: 25px;
+.experience-details {
+    flex-grow: 1;
+}
+
+.position-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.position-title {
+    font-weight: bold;
+}
+
+.position-dates {
     font-style: italic;
-    color: #666;
+    color: var(--link-color);
 }
 
 .experience-description {
-    margin-top: 5px;
-    margin-left: 25px;
-    font-style: italic;
-    color: #666;
+    margin-top: 10px;
 }
 
-/* Timeline */
 .timeline {
     position: relative;
     padding-left: 20px;
@@ -271,7 +283,6 @@ h2 {
     margin-left: 50px;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -285,9 +296,6 @@ h2 {
     animation: blink 1s step-end infinite;
 }
 
-@keyframes blink {
-    50% { border-color: transparent;}
-}
 .about-section {
     display: flex;
     align-items: center;
@@ -296,11 +304,11 @@ h2 {
 }
 
 .profile-image {
-    flex: 0 0 auto;
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
@@ -308,14 +316,16 @@ h2 {
     max-width: 600px;
 }
 
-/* Dark Mode Styles */
-[data-theme="dark"] {
-    --background-color: #1a1a1a;
-    --text-color: #ccc;
-    --accent-color: #ff5722;
-    --header-bg-color: #333;
-    --project-bg-color: #262626;
-    --hover-color: #f0efea;
-    --experience-bg-color: #333;
-    --timeline-color: #fca26e;
+/* Contact links */
+.contact-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.contact-link:hover {
+    color: var(--link-hover-color);
+    transform: scale(1.05);
 }
